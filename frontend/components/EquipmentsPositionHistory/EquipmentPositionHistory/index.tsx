@@ -1,6 +1,12 @@
 "use client"
 
 import { EquipmentPositionHistoryProps } from "@/utils/types"
+import dynamic from "next/dynamic";
+
+const MapArtifact = dynamic(() => import("@/components/Map"),{
+    ssr:false,
+    loading: () => <p>Loading map..</p>
+})
 
 export default function EquipmentPositionHistory({equipmentName,equipmentPositionHistory,equipmentLicense}:EquipmentPositionHistoryProps) {
   return (
@@ -19,11 +25,13 @@ export default function EquipmentPositionHistory({equipmentName,equipmentPositio
                         <h1>Lat: {eph.lat}</h1>
                         <h1>Date: {eph.date}</h1>
                     </div>
-                    <h1 className="mt-2">search location: <a className="link link-info link-hover"
-                        href={`https://www.google.com/maps?q=${eph.lat},${eph.lon}`}>Map</a></h1>
+                    <MapArtifact lat={eph.lat} lon={eph.lon} name={equipmentName}/>
                 </li>)}
             </ul>
         </div>
     </li>
   )
 }
+
+//<h1 className="mt-2">search location: <a className="link link-info link-hover"
+     //                   href={`https://www.google.com/maps?q=${eph.lat},${eph.lon}`}>Map</a></h1>
