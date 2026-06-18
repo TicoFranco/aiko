@@ -32,6 +32,3 @@ export default function EquipmentPositionHistory({equipmentName,equipmentPositio
     </li>
   )
 }
-
-//<h1 className="mt-2">search location: <a className="link link-info link-hover"
-     //                   href={`https://www.google.com/maps?q=${eph.lat},${eph.lon}`}>Map</a></h1>
